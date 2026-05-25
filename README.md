@@ -122,6 +122,3 @@ The three background orbs sit at **0°, 120°, and 240°** offsets, keeping the 
 
 ---
 
-## 📜 License
-
-MIT © 2025 Weignstone Churchil
