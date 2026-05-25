@@ -1,0 +1,152 @@
+/* App.css — Dynamic Color Clock */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=DM+Sans:wght@300;400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { min-height: 100vh; overflow: hidden; }
+
+/* ── Full-screen wrapper ── */
+.clock-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  transition: background 2s linear;
+}
+
+/* ── Glowing background orbs ── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.3;
+}
+.orb-a { width: 480px; height: 480px; top: -140px; left: -120px; animation: drift 14s ease-in-out infinite alternate; }
+.orb-b { width: 360px; height: 360px; bottom: -100px; right: -80px;  animation: drift 18s ease-in-out infinite alternate-reverse; }
+.orb-c { width: 280px; height: 280px; top: 50%; left: 60%;           animation: drift 10s ease-in-out infinite alternate; }
+
+@keyframes drift {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(40px,30px) scale(1.12); }
+}
+
+/* ── Glass card ── */
+.clock-card {
+  position: relative;
+  z-index: 10;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 28px;
+  padding: 52px 72px 44px;
+  text-align: center;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06),
+              0 40px 80px rgba(0,0,0,0.6),
+              inset 0 1px 0 rgba(255,255,255,0.1);
+  min-width: 520px;
+  animation: rise 0.8s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(40px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Day label ── */
+.day-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.82rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 22px;
+}
+
+/* ── Time row ── */
+.time-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+
+.digits {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 5.2rem;
+  color: #ffffff;
+  text-shadow: 0 0 40px rgba(255,255,255,0.25);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  transition: color 1s;
+}
+
+.colon {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 4.2rem;
+  line-height: 1;
+  padding: 0 4px;
+  animation: blink 1s step-start infinite;
+  transition: color 1s;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.9; }
+  50%       { opacity: 0.2; }
+}
+
+/* Seconds pulse */
+.sec {
+  animation: pulse 1s ease-in-out infinite;
+  transition: color 1s, text-shadow 1s;
+}
+@keyframes pulse {
+  0%  { transform: scale(1); }
+  8%  { transform: scale(1.06); }
+  16% { transform: scale(1); }
+}
+
+/* AM/PM badge */
+.ampm {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-left: 10px;
+  align-self: flex-start;
+  padding-top: 14px;
+  transition: color 1s;
+}
+
+/* ── Date label ── */
+.date-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.07em;
+}
+
+/* ── Accent bar ── */
+.bar {
+  height: 2px;
+  width: 72px;
+  border-radius: 2px;
+  margin: 28px auto 20px;
+  transition: background 1s;
+}
+
+/* ── Footer ── */
+.footer {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.66rem;
+  letter-spacing: 0.42em;
+  color: rgba(255,255,255,0.28);
+  text-transform: uppercase;
+}
