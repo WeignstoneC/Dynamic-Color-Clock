@@ -22,7 +22,8 @@ A real-time digital clock built with **React** and **Vite** that displays the cu
 | Tool | Purpose |
 |------|---------|
 | [Vite](https://vitejs.dev/) | Project scaffolding & dev server |
-| [React 18](https://react.dev/) | UI component + state management |
+| [React 19](https://react.dev/) | UI component + state management |
+| [date-fns](https://date-fns.org/) | Live date and time formatting |
 | CSS (custom) | Animations, glassmorphism, dynamic hue |
 | Google Fonts | Orbitron (clock digits) + DM Sans (labels) |
 
@@ -70,8 +71,6 @@ npm run preview
 
 ```
 color-clock/
-├── public/
-│   └── favicon.svg
 ├── src/
 │   ├── App.jsx        # Clock component — all logic & JSX
 │   ├── App.css        # Styles, animations, glassmorphism
